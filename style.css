@@ -1,0 +1,13 @@
+.cell{
+    border:1px solid gray;
+    min-width: 20px;
+    min-height: 20px;
+}
+.pole{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border:1px solid red;
+    
+    
+}
