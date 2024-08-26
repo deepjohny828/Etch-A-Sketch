@@ -1,13 +1,33 @@
 .cell{
-    border:1px solid gray;
-    min-width: 20px;
-    min-height: 20px;
+    box-sizing: border-box;
+    border-left:1px solid rgba(128, 128, 128, 0.521);
+    border-top:1px solid rgba(128, 128, 128, 0.521);
+    
+    min-width:2px;
+    min-height:2px;
+    height:100%
+    
+}
+
+
+.container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top:30px;
+    gap:30px;
+    
+}
+.btn{
+    display: flex;
+    gap:50px;
 }
 .pole{
     display:flex;
     justify-content: center;
-    align-items: center;
-    border:1px solid red;
-    
-    
+    height:350px;
+    width: 350px;
+    border:1px solid black;
+      
 }
