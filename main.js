@@ -1,11 +1,13 @@
 const pole = document.querySelector(".pole");
 const changSizeBtn = document.querySelector("#changeSize");
 const clearBtn = document.querySelector("#reset");
-const groupBtn = document.querySelector(".btn");
+const groupBtn = document.querySelector(".groupBtn");
 
 let heightPole = 16;
 let widthPole = 16;
 let poleSize = 350;
+let standartMode = false;
+let misstakesMode = true;
 
 function render(){
     
@@ -30,8 +32,35 @@ function render(){
 
 pole.addEventListener("mousemove",function(e){
     const event = e.target;
-    if(event.className === "cell"){
-        event.style.cssText = "background-color:red;";
+    if(standartMode){
+        if(event.className === "cell" && event.style.backgroundColor === ""){
+            event.style.cssText = `background-color:black;`;
+        }
+    }
+    else if(!standartMode){
+        if(event.className === "cell" && event.style.backgroundColor === ""){
+            const randomR = Math.floor((Math.random() * 1000) % 255);
+            const randomG = Math.floor((Math.random() * 1000) % 255);
+            const randomB = Math.floor((Math.random() * 1000) % 255);
+            event.style.cssText = `background-color:rgb(${randomR},${randomG},${randomB});opacity:1;`;
+        }
+        else if(event.className === "cell"){
+            if(event.style.opacity < 0 && !misstakesMode){
+                const randomR = Math.floor((Math.random() * 1000) % 255);
+                const randomG = Math.floor((Math.random() * 1000) % 255);
+                const randomB = Math.floor((Math.random() * 1000) % 255);
+                event.style.cssText = `background-color:rgb(${randomR},${randomG},${randomB});opacity:1;`;
+            }
+            else{
+                if(misstakesMode && event.style.opacity > 0.07){
+                    event.style.opacity -= 0.05;
+                }
+                else if(!misstakesMode){
+                    event.style.opacity -= 0.1;
+                }
+                
+            } 
+        }
     }
 });
 groupBtn.addEventListener("click",function(e){
@@ -51,6 +80,18 @@ groupBtn.addEventListener("click",function(e){
             return;
         case "reset":
             render();
+            return;
+        case "partyMode":
+            render();
+            standartMode = false;
+            return;
+        case "standart":
+            render();
+            standartMode = true;
+            return;
+        case "misstakes":
+            render();
+            misstakesMode = !misstakesMode;
             return;
     }
     

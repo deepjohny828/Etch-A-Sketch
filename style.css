@@ -1,3 +1,7 @@
+body{
+    margin:0;
+    background-color: rgb(22, 22, 70);
+}
 .cell{
     box-sizing: border-box;
     border-left:1px solid rgba(128, 128, 128, 0.521);
@@ -8,8 +12,6 @@
     height:100%
     
 }
-
-
 .container{
     display:flex;
     flex-direction: column;
@@ -22,6 +24,20 @@
 .btn{
     display: flex;
     gap:50px;
+}
+.groupBtn{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    justify-content: center;
+    align-items: center;
+}
+.btn>button{
+    background-color: inherit;
+    color:white;
+    border-radius: 5px;
+    padding:5px 20px;
+    width:150px;
 }
 .pole{
     display:flex;
